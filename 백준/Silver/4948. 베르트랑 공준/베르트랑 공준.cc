@@ -44,7 +44,9 @@ int main()
         if (n < 1 || n > 123'456) return 0;
 
         int count = 0;
-        for (int i = n+1; i <= n*2; i++)
+        int last = n*2;
+        int start = n+1;
+        for (int i = start; i <= last; i++)
         {
             if (Prime(i))
                 count++;
