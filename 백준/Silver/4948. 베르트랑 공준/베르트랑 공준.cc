@@ -1,10 +1,21 @@
 #include <iostream>
+#include <stdio.h>
+#include <vector>
+#include <algorithm>
+#include <map>
 #include <cmath>
+#include <set>
+#include <string>
+#include <cctype>
+#include <unordered_map>
+#include <unordered_set>
+#include <numeric>
+
 using namespace std;
 
 
 // 소수 판별하기
-bool Prime(unsigned long long num) 
+bool Prime(const int num) 
 {
         if( num%2 ==0){
             if(num==2){
@@ -36,23 +47,30 @@ int main()
     
     int n;
     
+    std::vector<pair<int, int>> m_data;
     while (1)
     {
         cin >> n;
         if (n == 0)
             break;
         if (n < 1 || n > 123'456) return 0;
-
-        int count = 0;
+        
         int last = n*2;
         int start = n+1;
-        for (int i = start; i <= last; i++)
+        m_data.push_back({start, last});
+    }
+
+    for(auto data: m_data){
+        int count =0;
+        for (int i = data.first; i <= data.second; i++)
         {
             if (Prime(i))
                 count++;
         }
-        cout << count << '\n';
+        cout<< count<<'\n';
     }
+    
+    
 
     return 0;
 }
