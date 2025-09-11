@@ -4,25 +4,29 @@ using namespace std;
 
 
 // 소수 판별하기
-bool Prime(unsigned long long n) 
+bool Prime(unsigned long long num) 
 {
-    if (n < 2) // 2 미만은 소수 x
-        return false;
-    
-    if (n == 2) // 2는 가장 작은 소수
-        return true;
-    
-    if (n % 2 == 0) // 짝수는 소수 x
-        return false;
-    
-    // 3부터 n의 제곱근까지 검사
-    int N = round(sqrt(n));
-    for (unsigned long long i = 3; i <= N; i += 2) 
-    {
-        if (n % i == 0) 
+        if( num%2 ==0){
+            if(num==2){
+                return true;
+            }
+            //짝수는 소수가 아님
             return false;
-    }
-    return true;
+        }
+        else{
+            if( num == 1){
+                return false;
+            }
+            int N = round(sqrt(num));
+            //num의 약수는 N의 범위에 있음. 
+            for( int i{3}; i<=N; i=i+2){
+                if( num%i == 0){
+                    // 나눠떨어지는 수가 하나라도 있으면 소수가 아님.
+                    return false;
+                }
+            }
+        }
+        return true;
 }
 
 int main() 
